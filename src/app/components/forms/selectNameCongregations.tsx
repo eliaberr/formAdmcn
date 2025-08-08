@@ -1,19 +1,19 @@
 "use client";
 
 import { infoCongregations } from "@/app/utils/congregations";
-import { Input } from "./input";
+import { Input } from "../Ui/input";
 import { useState } from "react";
+import { CardForm } from "./cardForm";
 
 export default function SelectNameCongregations() {
   const [idConCongregation, setIdCongregation] = useState(0);
 
-  console.log(idConCongregation);
   return (
-    <div className="grid gap-4">
-      <div className="flex flex-col text-start">
+    <CardForm title="Informações da Congregação">
+      <div className="flex flex-col mx-auto text-start">
         <label htmlFor="">Congregação</label>
         <select
-          className="border bg-gray-200 w-64"
+          className="border bg-gray-200 w-64 md:w-96"
           onChange={(e) => setIdCongregation(Number(e.target.value))}
         >
           <option></option>
@@ -31,10 +31,21 @@ export default function SelectNameCongregations() {
         classNameAdd="cursor-not-allowed"
         value={
           idConCongregation > 0
-            ? infoCongregations[idConCongregation-1].manager
+            ? infoCongregations[idConCongregation - 1].manager
             : ""
         }
       />
-    </div>
+      <Input
+        name="Nome Do Secretario local"
+        type="text"
+        disable
+        classNameAdd="cursor-not-allowed"
+        value={
+          idConCongregation > 0
+            ? infoCongregations[idConCongregation - 1].manager
+            : ""
+        }
+      />
+    </CardForm>
   );
 }
