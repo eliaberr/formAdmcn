@@ -1,9 +1,11 @@
+import { MemberRegistrationForm } from "./memberRegistrationForm";
 import SelectNameCongregations from "./selectNameCongregations";
 
 export function Form() {
   return (
-    <form className="mt-10 grid gap-4 ">
+    <form className="my-10 grid gap-10 ">
       <SelectNameCongregations />
+      <MemberRegistrationForm />
     </form>
   );
 }

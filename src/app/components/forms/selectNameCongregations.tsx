@@ -10,10 +10,10 @@ export default function SelectNameCongregations() {
 
   return (
     <CardForm title="Informações da Congregação">
-      <div className="flex flex-col mx-auto text-start">
-        <label htmlFor="">Congregação</label>
+      <div className="col-span-12 grid grid-cols-12">
+        <label className="col-span-10 col-start-2 text-start">Congregação</label>
         <select
-          className="border bg-gray-200 w-64 md:w-96"
+          className="border bg-gray-200 col-span-10 col-start-2 "
           onChange={(e) => setIdCongregation(Number(e.target.value))}
         >
           <option></option>
