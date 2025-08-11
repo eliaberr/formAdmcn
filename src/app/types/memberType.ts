@@ -1,1 +1,6 @@
-export interface Member { code: string; name: string, reason?: string };
+export interface Member {
+  code: string,
+  name: string,
+  reason?: string,
+  destinationChurch?: string
+};

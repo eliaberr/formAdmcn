@@ -1,6 +1,7 @@
 import { MemberRegistrationForm } from "./memberRegistrationForm";
 import { MemberCancellationForm } from "./memberCancellationForm";
 import SelectNameCongregations from "./selectNameCongregations";
+import { MemberTransferForm } from "./memberTransferForm";
 
 export function Form() {
   return (
@@ -8,6 +9,7 @@ export function Form() {
       <SelectNameCongregations />
       <MemberRegistrationForm />
       <MemberCancellationForm />
+      <MemberTransferForm />
     </form>
   );
 }
