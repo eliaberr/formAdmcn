@@ -7,7 +7,7 @@ export default function Home() {
       className={`grid items-center justify-items-center mt-10 text-center ${MAX_WIDTH}`}
     >
       <h1 className="font-bold text-2xl md:text-3xl lg:text-5xl">
-        Formulario ADMCN
+      Relatório Reunião Ministerial
       </h1>
       <p className="font-light text-xs mt-2 md:text-sm lg:text-base">
         Preencha os campos para gerar o relatório da Reunião Ministerial. Siga
