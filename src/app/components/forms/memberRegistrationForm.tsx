@@ -7,15 +7,17 @@ import { Member } from "@/app/types/memberType";
 import { IoTrashBinSharp } from "react-icons/io5";
 
 export function MemberRegistrationForm() {
-  const [membersRegistration, setRegistrationMembers] = useState<Member[]>([{ code: "", name: "" }]);
+  const [membersRegistration, setRegistrationMembers] = useState<Member[]>([
+    { code: "", name: "" },
+  ]);
 
   const addMember = () => {
     setRegistrationMembers((prev) =>
       prev.length < 50 ? [...prev, { code: "", name: "" }] : prev
     );
   };
-  const removeMember = () => {
-    setRegistrationMembers((prev) => prev.slice(0, -1));
+  const removeMember = (index: number) => {
+    setRegistrationMembers((prev) => prev.filter((_, i) => i !== index));
   };
   const updateMember = (i: number, field: keyof Member, value: string) => {
     setRegistrationMembers((prev) => {
@@ -52,7 +54,7 @@ export function MemberRegistrationForm() {
           {membersRegistration.length > 1 ? (
             <button
               type="button"
-              onClick={removeMember}
+              onClick={() => removeMember(index)}
               disabled={membersRegistration.length >= 50}
               className="absolute text-red-600 right-3 top-7"
             >

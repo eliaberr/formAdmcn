@@ -16,8 +16,8 @@ export function MemberTransferForm() {
       prev.length < 50 ? [...prev, { code: "", name: "", destinationChurch: "" }] : prev
     );
   };
-  const removeMember = () => {
-    setTransferMembers((prev) => prev.slice(0, -1));
+  const removeMember = (index: number) => {
+    setTransferMembers((prev) => prev.filter((_, i) => i !== index));
   };
   const updateMember = (i: number, field: keyof Member, value: string) => {
     setTransferMembers((prev) => {
@@ -64,7 +64,7 @@ export function MemberTransferForm() {
           {memberTransfer.length > 1 ? (
             <button
               type="button"
-              onClick={removeMember}
+              onClick={() => removeMember(index)}
               disabled={memberTransfer.length >= 50}
               className="absolute text-red-600 right-3 top-7"
             >
