@@ -15,8 +15,8 @@ export function MemberCancellationForm() {
       prev.length < 50 ? [...prev, { code: "", name: "", reason: "" }] : prev
     );
   };
-  const removeMember = () => {
-    setCancellationMembers((prev) => prev.slice(0, -1));
+  const removeMember = (index: number) => {
+    setCancellationMembers((prev) => prev.filter((_, i) => i !== index));
   };
   const updateMember = (i: number, field: keyof Member, value: string) => {
     setCancellationMembers((prev) => {
@@ -64,7 +64,7 @@ export function MemberCancellationForm() {
           {memberCancellation.length > 1 ? (
             <button
               type="button"
-              onClick={removeMember}
+              onClick={() => removeMember(index)}
               disabled={memberCancellation.length >= 50}
               className="absolute text-red-600 right-3 top-7"
             >
