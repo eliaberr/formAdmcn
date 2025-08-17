@@ -1,35 +1,33 @@
 "use client";
 
-import { useState } from "react";
 import { Input } from "../Ui/input";
 import { CardForm } from "./cardForm";
 import { Member } from "@/app/types/memberType";
 import { IoTrashBinSharp } from "react-icons/io5";
+import { MemberFormProps } from "@/app/types/MemberRegistrationFormType";
 
-export function MemberRegistrationForm() {
-  const [membersRegistration, setRegistrationMembers] = useState<Member[]>([
-    { code: "", name: "" },
-  ]);
-
+export function MemberRegistrationForm({
+  member,
+  setMembers,
+}: MemberFormProps) {
   const addMember = () => {
-    setRegistrationMembers((prev) =>
+    setMembers((prev) =>
       prev.length < 50 ? [...prev, { code: "", name: "" }] : prev
     );
   };
   const removeMember = (index: number) => {
-    setRegistrationMembers((prev) => prev.filter((_, i) => i !== index));
+    setMembers((prev) => prev.filter((_, i) => i !== index));
   };
   const updateMember = (i: number, field: keyof Member, value: string) => {
-    setRegistrationMembers((prev) => {
+    setMembers((prev) => {
       const clone = [...prev];
       clone[i] = { ...clone[i], [field]: value };
       return clone;
     });
   };
-
   return (
     <CardForm title="adesão de membros">
-      {membersRegistration.map((item, index) => (
+      {member.map((item, index) => (
         <div key={index} className="col-span-12 grid grid-cols-12 relative">
           <Input
             name="Cod."
@@ -51,11 +49,11 @@ export function MemberRegistrationForm() {
             onChange={(e) => updateMember(index, "name", e.target.value)}
             required={index > 1 ? true : false}
           />
-          {membersRegistration.length > 1 ? (
+          {member.length > 1 ? (
             <button
               type="button"
               onClick={() => removeMember(index)}
-              disabled={membersRegistration.length >= 50}
+              disabled={member.length >= 50}
               className="absolute text-red-600 right-3 top-7"
             >
               <IoTrashBinSharp />
@@ -68,8 +66,8 @@ export function MemberRegistrationForm() {
       <button
         type="button"
         onClick={addMember}
-        disabled={membersRegistration.length >= 50}
-        className="text-start col-span-10 col-start-2 -mt-3 text-sm underline text-blue-700"
+        disabled={member.length >= 50}
+        className="text-start col-span-10 col-start-2 -mt-3 text-sm underline text-blue-700 w-fit"
       >
         + Adicionar Outro Membro
       </button>

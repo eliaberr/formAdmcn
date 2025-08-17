@@ -2,19 +2,18 @@
 
 import { infoCongregations } from "@/app/utils/congregations";
 import { Input } from "../Ui/input";
-import { useState } from "react";
 import { CardForm } from "./cardForm";
+import { SelectNameCongregationsProps } from "@/app/types/SelectNameCongregations";
 
-export default function SelectNameCongregations() {
-  const [idConCongregation, setIdCongregation] = useState(0);
-
+export  function SelectNameCongregations({onChange, idCongregation}:SelectNameCongregationsProps) {
   return (
     <CardForm title="Informações da Congregação">
       <div className="col-span-12 grid grid-cols-12">
         <label className="col-span-10 col-start-2 text-start">Congregação</label>
         <select
           className="border bg-gray-200 col-span-10 col-start-2 "
-          onChange={(e) => setIdCongregation(Number(e.target.value))}
+          onChange={onChange}
+          required
         >
           <option></option>
           {infoCongregations.map((item) => (
@@ -30,8 +29,8 @@ export default function SelectNameCongregations() {
         disable
         classNameAdd="cursor-not-allowed"
         value={
-          idConCongregation > 0
-            ? infoCongregations[idConCongregation - 1].manager
+          idCongregation > 0
+            ? infoCongregations[idCongregation - 1].manager
             : ""
         }
       />
@@ -41,8 +40,8 @@ export default function SelectNameCongregations() {
         disable
         classNameAdd="cursor-not-allowed"
         value={
-          idConCongregation > 0
-            ? infoCongregations[idConCongregation - 1].manager
+          idCongregation > 0
+            ? infoCongregations[idCongregation - 1].manager
             : ""
         }
       />

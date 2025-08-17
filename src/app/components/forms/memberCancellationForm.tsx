@@ -1,34 +1,33 @@
 "use client";
 
-import { useState } from "react";
 import { Input } from "../Ui/input";
 import { CardForm } from "./cardForm";
 import { Member } from "@/app/types/memberType";
 import { IoTrashBinSharp } from "react-icons/io5";
+import { MemberFormProps } from "@/app/types/MemberRegistrationFormType";
 
-export function MemberCancellationForm() {
-  const [memberCancellation, setCancellationMembers] = useState<Member[]>([
-    { code: "", name: "", reason: "" },
-  ]);
+export function MemberCancellationForm({
+  member,
+  setMembers,
+}: MemberFormProps) {
   const addMember = () => {
-    setCancellationMembers((prev) =>
+    setMembers((prev) =>
       prev.length < 50 ? [...prev, { code: "", name: "", reason: "" }] : prev
     );
   };
   const removeMember = (index: number) => {
-    setCancellationMembers((prev) => prev.filter((_, i) => i !== index));
+    setMembers((prev) => prev.filter((_, i) => i !== index));
   };
   const updateMember = (i: number, field: keyof Member, value: string) => {
-    setCancellationMembers((prev) => {
+    setMembers((prev) => {
       const clone = [...prev];
       clone[i] = { ...clone[i], [field]: value };
       return clone;
     });
   };
-
   return (
     <CardForm title="Baixa de Membro">
-      {memberCancellation.map((item, index) => (
+      {member.map((item, index) => (
         <div key={index} className="col-span-12 grid grid-cols-12 relative">
           <Input
             name="Cod."
@@ -51,21 +50,25 @@ export function MemberCancellationForm() {
           />
           <div className="col-span-2 text-start">
             <label htmlFor="">Motivo</label>
-            <select className="bg-gray-200 border w-full ">
+            <select
+              onChange={(e) => updateMember(index, "reason", e.target.value)}
+              className="bg-gray-200 border w-full "
+            >
               <option value=""></option>
-              <option value="">Abandono</option>
-              <option value="">Falecimento</option>
-              <option value="">Desaparecimento</option>
-              <option value="">Transferência Ministerial</option>
-              <option value="">Outros</option>
+              <option value="Abandono">Abandono</option>
+              <option value="Falecimento">Falecimento</option>
+              <option value="Desaparecimento">Desaparecimento</option>
+              <option value="Transferência Ministerial">
+                Transferência Ministerial
+              </option>
+              <option value="Outros">Outros</option>
             </select>
           </div>
-
-          {memberCancellation.length > 1 ? (
+          {member.length > 1 ? (
             <button
               type="button"
               onClick={() => removeMember(index)}
-              disabled={memberCancellation.length >= 50}
+              disabled={member.length >= 50}
               className="absolute text-red-600 right-3 top-7"
             >
               <IoTrashBinSharp />
@@ -78,8 +81,8 @@ export function MemberCancellationForm() {
       <button
         type="button"
         onClick={addMember}
-        disabled={memberCancellation.length >= 50}
-        className="text-start col-span-10 col-start-2 -mt-3 text-sm underline text-blue-700"
+        disabled={member.length >= 50}
+        className="text-start col-span-10 col-start-2 -mt-3 text-sm underline text-blue-700 w-fit"
       >
         + Adicionar Outro Membro
       </button>
