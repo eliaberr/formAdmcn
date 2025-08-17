@@ -11,7 +11,7 @@ export default function Home() {
       </h1>
       <p className="font-light text-xs mt-2 md:text-sm lg:text-base">
         Preencha os campos para gerar o relatório da Reunião Ministerial. Siga
-        as instruções de cada campo de preenchimento.
+        as instruções de cada campo para preenchimento correto.
       </p>
       <Form />
     </div>
