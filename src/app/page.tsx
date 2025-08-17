@@ -1,5 +1,4 @@
 import { Form } from "./components/forms/form";
-import { ButtonModalViewPDF } from "./components/modal/buttonModalViewPDF";
 import { MAX_WIDTH } from "./utils/classNames";
 
 export default function Home() {

@@ -2,14 +2,13 @@
 
 import { MemberRegistrationForm } from "./memberRegistrationForm";
 import { useState } from "react";
-import { FormProps } from "@/app/types/FormType";
 import { ButtonModalViewPDF } from "../modal/buttonModalViewPDF";
 import { Member } from "@/app/types/memberType";
 import { SelectNameCongregations } from "./selectNameCongregations";
 import { MemberCancellationForm } from "./memberCancellationForm";
 import { MemberTransferForm } from "./memberTransferForm";
 
-export function Form({}: FormProps) {
+export function Form() {
   const [idCongregation, setIdCongregation] = useState(0);
   const [membersRegistration, setRegistrationMembers] = useState<Member[]>([
     { code: "", name: "" },
