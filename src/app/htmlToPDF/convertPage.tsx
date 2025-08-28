@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { PDFMinisterialMeetingReport } from "../components/formPDF/PDFMinisterialMeetingReport";
 import { GenerateReportPageProps } from "../types/GenerateReportPageType";
+import { PDFMinisterialMeetingReport } from "./PDFMinisterialMeetingReport";
 
 export default function GenerateReportPage({
   idCongregation,
@@ -11,12 +11,9 @@ export default function GenerateReportPage({
   arrayMemberCancellation,
 }: GenerateReportPageProps) {
   const printRef = useRef<HTMLDivElement>(null);
-
   const gerarPDF = async () => {
     if (!printRef.current) return;
-
     const html2pdf = (await import("html2pdf.js")).default;
-
     const opt = {
       margin: 0,
       filename: "relatorio.pdf",
@@ -25,7 +22,6 @@ export default function GenerateReportPage({
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" as const },
       pagebreak: { mode: ["css", "legacy"] },
     };
-
     html2pdf().set(opt).from(printRef.current).save();
   };
 

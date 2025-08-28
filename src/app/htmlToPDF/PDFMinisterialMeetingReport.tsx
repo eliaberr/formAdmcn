@@ -1,11 +1,11 @@
 "use client";
 
 import { forwardRef } from "react";
-import { Header } from "./header";
-import { InfoCongregations } from "./infoCongregations";
-import { MemberSection } from "./memberSection";
-import { ApprovalSignature } from "./approvalSignatureSection";
 import { PDFMinisterialMeetingReportProps } from "@/app/types/PDFMinisterialMeetingReportType";
+import { Header } from "../components/formPDF/header";
+import { InfoCongregations } from "../components/formPDF/infoCongregations";
+import { MemberSection } from "../components/formPDF/memberSection";
+import { ApprovalSignature } from "../components/formPDF/approvalSignatureSection";
 
 export const PDFMinisterialMeetingReport = forwardRef<
   HTMLDivElement,
@@ -42,5 +42,4 @@ export const PDFMinisterialMeetingReport = forwardRef<
     );
   }
 );
-
 PDFMinisterialMeetingReport.displayName = "PDFMinisterialMeetingReport";
