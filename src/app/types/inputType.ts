@@ -10,5 +10,4 @@ export interface InpuProps {
   sizeInput?:string,
   sizeDiv?:string,
   maxLength?:number
-
 }

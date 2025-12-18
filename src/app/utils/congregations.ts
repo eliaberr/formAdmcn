@@ -5,7 +5,6 @@ export const infoCongregations = [
     address: "Rua Ipero, 50",
     neighborhood: "Cidade Nova I",
     city: "Itu",
-    phone: "_11 98333-2958",
     manager: "Rodney Ramos"
   },
   {
